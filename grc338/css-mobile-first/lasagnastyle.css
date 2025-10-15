@@ -56,7 +56,7 @@ figcaption{
     font-size: 1rem;
     color: rgb(0,0,0);
     margin:1rem;
-    padding-bottom: 2rem 0rem;z
+    padding-bottom: 2rem 0rem;
 }
 
 ol{
@@ -70,7 +70,7 @@ ol{
 ul{
     color: rgb(0,0,0);
     list-style-type: disc;
-    padding: 0rem 1rem 1rem 1rem;
+    padding: 0rem 1rem 0rem 1rem;
     margin-left: 1rem;
 }
 

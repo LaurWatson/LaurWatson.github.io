@@ -1,0 +1,292 @@
+/*CSS DOCUMENT*/
+
+html, body, div, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit;} /*My edited version of the Eric Meyer’s reset tool. You may want to include this in all of your future CSS files. */
+
+/* Layout containers */
+
+div.home-container,
+div.container {
+	position: relative;
+	min-height: 100vh;
+}
+
+/* Home-specific container (background image) */
+div.home-container {
+	background: url(home-background-washington.jpg) top fixed;
+	background-size: 130rem;
+}
+
+/* Inner page container */
+div.container {
+	max-width: 60rem;
+}
+
+/* Global layout */
+
+body {
+	font-family: sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: url(home-background-washington.jpg) top fixed;
+	background-size: 170rem;
+}
+
+/* Main content */
+
+main {
+	padding: 1rem 2rem 6rem;
+}
+
+main.menu,
+main.about,
+main.contact {
+	background-color: rgb(255 255 255);
+}
+
+main.home {
+	padding: 8rem 1rem;
+	text-align: left;
+}
+
+/* Images */
+
+img {
+	width: 100%;
+	/* Please leave this line. */
+	display: block;
+}
+
+img.home {
+	max-width: 40rem;
+}
+
+/* Typography */
+
+h1,
+h2,
+h3,
+h4,
+nav ul li,
+p.slogan,
+p.subslogan{
+	font-family: "the-seasons", sans-serif;
+	font-style: normal;
+}
+
+h1 {
+	width: 10rem;
+	color: rgb(0, 0, 0);
+	font-weight: 700;
+}
+
+h2 {
+	font-size: 2.5rem;
+	margin: 2rem 0 1rem;
+	font-weight: 700;
+}
+
+h3 {
+	font-size: 1.5rem;
+	margin: 2rem 0 1rem;
+	font-weight: 700;
+}
+
+h4 {
+	font-weight: 900;
+}
+
+p {
+	font-size: 1rem;
+	font-weight: 100;
+	margin: 0;
+	color: rgb(0, 0, 0);
+}
+
+p.body {
+	margin-top: 1rem;
+}
+
+p.description {
+	margin-top: 0.4rem;
+	grid-column: 1 / 3;
+	grid-row: 2;
+}
+
+p.price {
+	grid-row: 1;
+	grid-column: 2;
+	color: rgb(97, 122, 109);
+	text-align: right;
+	margin: 0 0 0 1rem;
+	font-weight: 600;
+}
+
+p.slogan {
+	font-size: 4rem;
+	font-weight: 700;
+	margin: 2rem 0 2rem;
+	color: rgb(0, 0, 0);
+}
+
+p.subslogan {
+	font-weight: 900;
+	margin-bottom: 4rem;
+	max-width: 40rem;
+	font-size: 1.25rem;
+}
+
+/* Header & navigation */
+
+header {
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	padding: 1rem;
+	background-color: rgb(224, 235, 227);
+}
+
+nav ul {
+	text-align: right;
+}
+
+nav ul li {
+	text-transform: uppercase;
+	font-weight: 700;
+	text-align: right;
+}
+
+nav ul li.selected a {
+	color: rgb(84, 126, 117);
+}
+
+nav ul li a {
+	color: rgb(0, 0, 0);
+	padding: 0.5rem 0.5rem 0.25rem;
+	text-decoration: none;
+}
+
+/* Lists */
+
+ul.menu li {
+	padding-top: 1rem;
+}
+
+ul.contact li {
+	margin: 1rem 1rem 1rem 0;
+	font-weight: 300;
+	font-size: 1rem;
+}
+
+ul li {
+	list-style-type: none;
+	margin: 0.5rem 0;
+}
+
+/* Article / figure */
+
+article {
+	max-width: 30rem;
+	margin: 0 auto;
+}
+
+figure {
+	margin-bottom: 1rem;
+}
+
+/* Menu layout */
+
+main.menu ul {
+	margin: 1rem 0;
+}
+
+main.menu ul li {
+	margin: 0;
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto auto;
+}
+
+/* Footer */
+
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 3rem;
+	box-sizing: border-box;
+	padding: 1rem;
+	background-color: rgb(224, 235, 227);
+	text-align: center;
+}
+
+footer p {
+	margin: 0;
+}
+
+/* Address */
+
+address {
+	color: rgb(0, 0, 0);
+	margin: 0rem 1rem 1rem 0;
+	font-weight: 800;
+	font-size: 1rem;
+}
+
+/* Media queries */
+
+@media screen and (min-width: 60em) {
+
+	div.container,
+	div.home-container {
+		max-width: 80em;
+		background-color: rgb(255, 255, 255);
+	}
+
+	main.home {
+		border-left: 2rem solid rgb(224, 235, 227);
+		border-right: 2rem solid rgb(224, 235, 227);
+	}
+
+	p.slogan {
+		max-width: 40rem;
+	}
+
+	article {
+		max-width: 50rem;
+		margin: 0 auto;
+	}
+
+	nav ul {
+		display: grid;
+		grid-template-columns: repeat(3, auto);
+		grid-template-rows: auto;
+		align-items: center;
+		text-align: center;
+	}
+
+	nav ul li {
+		text-align: right;
+		font-size: 2em;
+		padding-left: 1rem;
+	}
+
+	nav ul li a {
+		padding: 0.5rem 0.5rem 0;
+		text-decoration: none;
+	}
+
+	main.menu ul {
+		margin: 1rem 0;
+		display: grid;
+		grid-template-columns: auto auto;
+		grid-template-rows: auto auto auto;
+		column-gap: 4rem;
+	}
+
+	main.menu ul li {
+		margin: 1rem 0;
+		display: grid;
+		grid-template-columns: auto auto;
+		grid-template-rows: auto auto;
+	}
+}

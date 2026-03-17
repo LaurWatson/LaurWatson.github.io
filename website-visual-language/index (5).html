@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>San Luis Chamber Orchestra</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & BASE ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Lato',sans-serif;color:#222;background:#fff;overflow-x:hidden;}
+img{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+
+/* ─── VARIABLES ─── */
+:root{
+  --dark:#18100a;
+  --brown:#7a3b1e;
+  --brown-lt:#9e5530;
+  --tan:#f5f1eb;
+  --tan2:#ede8df;
+  --white:#ffffff;
+  --gray:#888;
+  --light:#f8f7f5;
+  --border:#ddd;
+  --text:#333;
+  --text-light:#666;
+}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:62px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.2rem;
+  background:rgba(20,11,6,0.78);
+  backdrop-filter:blur(10px);
+}
+.nav-logo{
+  display:flex;align-items:center;gap:0.7rem;
+  text-decoration:none;
+}
+.nav-logo-box{
+  border:1.5px solid rgba(255,255,255,0.45);
+  padding:0.22rem 0.6rem;
+  display:flex;flex-direction:column;align-items:flex-start;
+  line-height:1;
+}
+.nav-logo-name{
+  font-family:'Dancing Script',cursive;
+  font-size:1.05rem;font-weight:700;
+  color:#fff;white-space:nowrap;
+}
+.nav-logo-sub{
+  font-size:0.48rem;letter-spacing:0.28em;text-transform:uppercase;
+  color:rgba(255,255,255,0.55);font-weight:400;margin-top:2px;
+}
+.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center;}
+.nav-links a{
+  font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:rgba(255,255,255,0.88);font-weight:700;
+  position:relative;padding-bottom:2px;transition:color 0.2s;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:1px;background:#fff;
+  transform:scaleX(0);transform-origin:right;transition:transform 0.25s;
+}
+.nav-links a:hover{color:#fff;}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);transform-origin:left;}
+.nav-links a.active{color:#fff;}
+.nav-donate{
+  font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;
+  padding:0.45rem 1.1rem;
+  border:2px solid #fff;color:#fff;
+  transition:all 0.2s;
+}
+.nav-donate:hover{background:#fff;color:var(--dark);}
+
+/* ─── HERO ─── */
+#home{
+  position:relative;height:100vh;min-height:560px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-end;
+  padding-bottom:8vh;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    linear-gradient(to bottom, rgba(10,5,2,0.32) 0%, rgba(10,5,2,0.18) 45%, rgba(10,5,2,0.72) 100%),
+    url('https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=1600&q=80') center 30%/cover no-repeat;
+}
+.hero-content{
+  position:relative;z-index:1;
+  text-align:center;
+}
+.hero-title{
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(3rem,8vw,7rem);
+  font-weight:700;color:#fff;
+  line-height:1;
+  text-shadow:0 2px 24px rgba(0,0,0,0.45);
+  margin-bottom:0.5rem;
+}
+.hero-sub{
+  font-size:0.9rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(255,255,255,0.82);font-weight:300;
+}
+
+/* ─── SECTION COMMON ─── */
+.sec{padding:5.5rem 5%;}
+.sec-bg-tan{background:var(--tan);}
+.sec-bg-white{background:#fff;}
+.sec-bg-light{background:var(--light);}
+.sec-bg-dark{background:var(--dark);}
+
+.eyebrow{
+  font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--brown);font-weight:700;margin-bottom:0.5rem;
+}
+.eyebrow-light{color:rgba(255,255,255,0.5);}
+.sec-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.7rem,3vw,2.4rem);font-weight:600;
+  color:#111;line-height:1.2;margin-bottom:0.9rem;
+}
+.sec-title em{font-style:italic;}
+.sec-body{font-size:0.95rem;line-height:1.82;color:var(--text-light);font-weight:300;}
+.divider{width:44px;height:2px;background:var(--brown);margin-bottom:1.3rem;}
+.divider-light{background:rgba(255,255,255,0.35);}
+
+.btn-outline{
+  display:inline-block;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;
+  font-weight:700;padding:0.65rem 1.6rem;
+  border:2px solid #111;color:#111;
+  transition:all 0.22s;
+}
+.btn-outline:hover{background:#111;color:#fff;}
+.btn-outline-light{border-color:rgba(255,255,255,0.6);color:#fff;}
+.btn-outline-light:hover{background:rgba(255,255,255,0.15);}
+.btn-brown{
+  display:inline-block;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;
+  font-weight:700;padding:0.65rem 1.6rem;
+  background:var(--brown);color:#fff;border:2px solid var(--brown);
+  transition:all 0.22s;
+}
+.btn-brown:hover{background:var(--brown-lt);border-color:var(--brown-lt);}
+
+/* ─── ABOUT (image + text) ─── */
+#about .about-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:0;
+}
+.about-img{
+  aspect-ratio:4/3;
+  background:url('https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=900&q=80') center/cover;
+  position:relative;
+}
+.about-img::after{content:'';position:absolute;inset:0;border:5px solid var(--brown);pointer-events:none;}
+.about-text{padding:4rem 4.5rem;background:#fff;}
+.about-text .sec-title{font-size:clamp(1.4rem,2.5vw,2rem);}
+.about-text .sec-body{margin-bottom:2rem;}
+.about-points{display:flex;flex-direction:column;gap:0.85rem;margin-top:1.5rem;}
+.about-point{display:flex;gap:1rem;align-items:flex-start;padding-bottom:0.85rem;border-bottom:1px solid #eee;}
+.about-point:last-child{border-bottom:none;padding-bottom:0;}
+.ap-icon{color:var(--brown);font-size:1rem;margin-top:0.15rem;flex-shrink:0;}
+.ap-label{font-weight:700;font-size:0.85rem;margin-bottom:0.15rem;}
+.ap-desc{font-size:0.82rem;color:var(--text-light);line-height:1.55;}
+
+/* ─── UPCOMING CONCERTS ─── */
+#concerts .concerts-top{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem;
+}
+.concert-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.concert-card{background:#fff;overflow:hidden;transition:box-shadow 0.25s,transform 0.25s;}
+.concert-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.1);transform:translateY(-3px);}
+.cc-img{
+  height:200px;position:relative;overflow:hidden;
+  background:#222 center/cover;
+}
+.cc-img-1{background-image:url('https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=600&q=80');}
+.cc-img-2{background-image:url('https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=600&q=80');}
+.cc-img-3{background-image:url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80');}
+.cc-date-badge{
+  position:absolute;top:10px;left:10px;
+  background:#fff;
+  width:44px;text-align:center;
+  padding:4px 0;
+  font-weight:700;line-height:1;
+}
+.cc-date-badge .month{font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--brown);}
+.cc-date-badge .day{font-size:1.35rem;color:#111;margin-top:1px;}
+.cc-body{padding:1.2rem 1.4rem 1.5rem;}
+.cc-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:#111;margin-bottom:0.25rem;}
+.cc-venue{font-size:0.78rem;color:var(--text-light);margin-bottom:0.2rem;}
+.cc-time{font-size:0.78rem;color:var(--text-light);margin-bottom:1rem;}
+.cc-actions{display:flex;gap:1rem;align-items:center;}
+.cc-link{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--brown);font-weight:700;}
+.cc-link:hover{color:var(--brown-lt);}
+
+/* Past concerts */
+.past-concerts{margin-top:4rem;padding-top:3rem;border-top:1px solid #e0e0e0;}
+.past-title{font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gray);font-weight:700;margin-bottom:1.2rem;display:flex;align-items:center;gap:1rem;}
+.past-title::after{content:'';flex:1;height:1px;background:#e0e0e0;}
+.past-list{display:flex;flex-direction:column;}
+.past-item{display:flex;align-items:center;gap:2rem;padding:0.9rem 0;border-bottom:1px solid #eee;transition:padding-left 0.18s;}
+.past-item:hover{padding-left:0.6rem;}
+.past-item-date{font-size:0.75rem;color:var(--brown);font-weight:700;width:110px;flex-shrink:0;}
+.past-item-name{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;flex:1;color:#111;}
+.past-item-venue{font-size:0.78rem;color:var(--gray);}
+.past-item-arr{color:var(--brown);margin-left:auto;}
+
+/* ─── JOIN US ─── */
+#join .join-inner{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;}
+.join-text{padding:5rem 4.5rem;background:#fff;display:flex;flex-direction:column;justify-content:center;}
+.join-text .sec-title{font-size:clamp(1.5rem,2.5vw,2.1rem);}
+.join-tagline{font-size:1rem;font-weight:700;color:#111;margin-bottom:1.3rem;}
+.join-body{font-size:0.92rem;line-height:1.82;color:var(--text-light);font-weight:300;margin-bottom:1.5rem;}
+.join-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-bottom:2rem;}
+.join-list li{font-size:0.88rem;color:var(--text-light);display:flex;align-items:center;gap:0.6rem;}
+.join-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--brown);flex-shrink:0;}
+.join-img{
+  min-height:420px;
+  background:url('https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=900&q=80') center/cover no-repeat;
+  position:relative;
+}
+.join-img::after{content:'';position:absolute;inset:0;border:5px solid var(--brown);pointer-events:none;}
+
+/* Rehearsal schedule */
+.reh-schedule{margin-top:2.5rem;}
+.reh-header{font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gray);font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:1rem;}
+.reh-header::after{content:'';flex:1;height:1px;background:#e0e0e0;}
+.reh-table{width:100%;border-collapse:collapse;}
+.reh-table th{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);font-weight:700;padding:0.5rem 0.7rem;text-align:left;border-bottom:2px solid var(--brown);}
+.reh-table td{padding:0.85rem 0.7rem;border-bottom:1px solid #eee;font-size:0.85rem;color:var(--text-light);}
+.reh-table tr:hover td{background:#faf9f7;}
+.reh-name{font-family:'Playfair Display',serif;font-style:italic;color:#111;}
+.reh-date-cell{color:var(--brown);font-weight:700;white-space:nowrap;}
+.reh-mat{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown);font-weight:700;text-decoration:none;}
+
+/* ─── OUR MUSIC ─── */
+#music .music-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+.music-card{position:relative;overflow:hidden;cursor:default;}
+.music-card-img{
+  height:220px;background:#333 center/cover;
+  position:relative;
+}
+.mc-img-1{background-image:url('https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=600&q=80');}
+.mc-img-2{background-image:url('https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=600&q=80');}
+.mc-img-3{background-image:url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80');}
+.music-card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,5,2,0.72) 0%,transparent 55%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:1.2rem;
+}
+.mc-title{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:0.2rem;}
+.mc-date{font-size:0.7rem;color:rgba(255,255,255,0.65);letter-spacing:0.12em;}
+.music-card-body{background:#fff;padding:1rem 1.2rem;}
+.mc-link{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--brown);font-weight:700;}
+
+/* Rep list */
+.rep-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:3.5rem;border-top:1px solid #e0e0e0;}
+.rep-item{display:flex;gap:1.5rem;align-items:center;padding:1rem 0;border-bottom:1px solid #e0e0e0;}
+.rep-era{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brown);font-weight:700;width:100px;flex-shrink:0;}
+.rep-composers{font-size:0.85rem;color:var(--text-light);}
+
+/* ─── RESOURCES (For Musicians) ─── */
+#resources .res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+.res-card{background:#fff;padding:2rem;border-top:3px solid #e0e0e0;transition:border-color 0.25s,transform 0.25s;}
+.res-card:hover{border-top-color:var(--brown);transform:translateY(-3px);}
+.res-icon{font-size:1.5rem;margin-bottom:0.9rem;}
+.res-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:#111;margin-bottom:0.5rem;}
+.res-body{font-size:0.85rem;line-height:1.72;color:var(--text-light);}
+.res-link{display:inline-block;margin-top:0.8rem;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--brown);font-weight:700;}
+.res-link:hover{color:var(--brown-lt);}
+
+/* Find a teacher */
+#teacher{padding:5.5rem 5%;background:var(--light);}
+.inst-tabs{display:flex;flex-wrap:wrap;gap:0.5rem;margin:1.8rem 0;}
+.inst-tab{padding:0.45rem 1.1rem;border:1px solid #ccc;background:none;font-family:'Lato',sans-serif;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;cursor:pointer;color:#333;transition:all 0.2s;}
+.inst-tab:hover,.inst-tab.active{background:#111;color:#fff;border-color:#111;}
+.teacher-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.teacher-card{background:#fff;padding:1.8rem;}
+.tc-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:#111;margin-bottom:0.2rem;}
+.tc-instr{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--brown);font-weight:700;margin-bottom:0.7rem;}
+.tc-desc{font-size:0.82rem;color:var(--text-light);line-height:1.6;margin-bottom:0.8rem;}
+.tc-contact{font-size:0.72rem;color:var(--brown);font-weight:700;}
+
+/* ─── OUR BOARD ─── */
+#board{padding:5.5rem 5%;background:#fff;}
+.board-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2rem;margin-top:2.5rem;}
+.board-card{display:flex;flex-direction:column;align-items:center;text-align:center;}
+.board-photo{width:100%;aspect-ratio:1;background:#d8d0c8 center/cover no-repeat;margin-bottom:0.8rem;}
+.board-name{font-weight:700;font-size:0.88rem;color:#111;margin-bottom:0.15rem;}
+.board-role{font-size:0.72rem;color:var(--text-light);}
+
+/* ─── DONATE ─── */
+#donate{padding:5.5rem 5%;background:var(--tan);}
+.donate-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.freq-toggle{display:flex;margin-bottom:1.5rem;}
+.freq-btn{flex:1;padding:0.5rem;border:1px solid #ccc;background:none;font-family:'Lato',sans-serif;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;cursor:pointer;color:#333;transition:all 0.2s;}
+.freq-btn.active,.freq-btn:hover{background:#111;color:#fff;border-color:#111;}
+.amt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem;margin-bottom:1.3rem;}
+.amt-btn{padding:1.2rem 0.5rem;border:1px solid #ccc;background:none;text-align:center;cursor:pointer;transition:all 0.2s;font-family:'Lato',sans-serif;}
+.amt-btn:hover,.amt-btn.active{border-color:var(--brown);background:var(--brown);color:#fff;}
+.amt-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:400;display:block;line-height:1;}
+.amt-label{font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;opacity:0.7;margin-top:0.2rem;}
+.d-input{width:100%;padding:0.8rem 1rem;border:1px solid #ccc;font-family:'Lato',sans-serif;font-size:0.88rem;color:#333;outline:none;margin-bottom:0.7rem;background:#fff;transition:border-color 0.2s;}
+.d-input:focus{border-color:var(--brown);}
+.d-row{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;margin-bottom:0.7rem;}
+.d-row .d-input{margin-bottom:0;}
+.btn-donate{width:100%;padding:1rem;background:var(--brown);color:#fff;border:none;font-family:'Lato',sans-serif;font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;cursor:pointer;margin-top:0.7rem;transition:background 0.22s;}
+.btn-donate:hover{background:var(--brown-lt);}
+.d-note{font-size:0.72rem;color:var(--gray);margin-top:0.8rem;line-height:1.55;text-align:center;}
+.impact-items{display:flex;flex-direction:column;gap:1.2rem;margin-top:0.5rem;}
+.impact-item{display:flex;gap:1.2rem;align-items:flex-start;padding-bottom:1.2rem;border-bottom:1px solid #ddd;}
+.impact-item:last-child{border-bottom:none;}
+.impact-bar{width:3px;background:var(--brown);flex-shrink:0;align-self:stretch;min-height:40px;}
+.impact-amt{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--brown);font-weight:600;}
+.impact-desc{font-size:0.85rem;color:var(--text-light);line-height:1.6;margin-top:0.1rem;}
+
+/* Sponsor tiers */
+.sponsor-strip{padding:4rem 5%;background:var(--dark);}
+.sponsor-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:2.5rem;}
+.s-tier{background:rgba(255,255,255,0.05);padding:2.2rem;border-top:2px solid rgba(255,255,255,0.1);transition:border-color 0.25s;}
+.s-tier:hover{border-top-color:rgba(192,150,90,0.7);}
+.s-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:#fff;margin-bottom:0.25rem;}
+.s-price{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(192,150,90,0.9);font-weight:700;margin-bottom:1rem;}
+.s-benefits{list-style:none;display:flex;flex-direction:column;gap:0.55rem;}
+.s-benefits li{font-size:0.82rem;color:rgba(255,255,255,0.55);display:flex;align-items:flex-start;gap:0.5rem;line-height:1.5;}
+.s-benefits li::before{content:'✓';color:rgba(192,150,90,0.8);font-size:0.72rem;margin-top:0.12rem;flex-shrink:0;font-weight:700;}
+
+/* ─── GET IN TOUCH ─── */
+#contact{padding:5.5rem 5%;background:var(--dark);color:#fff;}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;}
+.contact-left .sec-title{color:#fff;}
+.contact-left .sec-body{color:rgba(255,255,255,0.6);}
+.contact-details{margin-top:2rem;display:flex;flex-direction:column;gap:0.9rem;}
+.c-detail{display:flex;align-items:center;gap:0.8rem;font-size:0.88rem;color:rgba(255,255,255,0.7);}
+.c-detail a{color:rgba(255,255,255,0.7);transition:color 0.2s;}
+.c-detail a:hover{color:#fff;}
+.c-icon{color:rgba(192,150,90,0.8);font-size:0.9rem;width:18px;text-align:center;}
+.social-row{display:flex;gap:0.8rem;margin-top:1.5rem;}
+.social-btn{width:34px;height:34px;border:1px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;font-size:0.8rem;color:rgba(255,255,255,0.6);transition:all 0.2s;}
+.social-btn:hover{border-color:#fff;color:#fff;}
+.contact-form{display:flex;flex-direction:column;gap:0.7rem;}
+.c-input,.c-textarea{width:100%;padding:0.75rem 1rem;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);font-family:'Lato',sans-serif;font-size:0.88rem;color:#fff;outline:none;transition:border-color 0.2s;}
+.c-input::placeholder,.c-textarea::placeholder{color:rgba(255,255,255,0.35);}
+.c-input:focus,.c-textarea:focus{border-color:rgba(192,150,90,0.6);}
+.c-textarea{height:110px;resize:vertical;}
+.btn-send{align-self:flex-end;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;padding:0.7rem 1.8rem;background:var(--brown);color:#fff;border:none;cursor:pointer;font-family:'Lato',sans-serif;transition:background 0.22s;}
+.btn-send:hover{background:var(--brown-lt);}
+
+/* ─── FOOTER ─── */
+footer{background:#0f0805;color:rgba(255,255,255,0.45);padding:2rem 5%;}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:0.75rem;}
+.footer-tags{display:flex;gap:1.2rem;}
+.footer-tags a{font-size:0.72rem;color:rgba(255,255,255,0.35);transition:color 0.2s;}
+.footer-tags a:hover{color:rgba(255,255,255,0.7);}
+
+/* ─── ANIMATIONS ─── */
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){
+  .concert-cards,.music-cards,.board-grid{grid-template-columns:repeat(2,1fr);}
+  .res-grid,.teacher-grid,.sponsor-tiers{grid-template-columns:repeat(2,1fr);}
+  #about .about-inner,#join .join-inner,.contact-inner{grid-template-columns:1fr;}
+  .donate-inner{grid-template-columns:1fr;gap:3rem;}
+  .rep-grid{grid-template-columns:1fr;}
+}
+@media(max-width:680px){
+  nav{padding:0 1.2rem;}
+  .nav-links{display:none;}
+  .sec{padding:4rem 1.5rem;}
+  .about-text,.join-text{padding:2.5rem 1.5rem;}
+  .concert-cards,.music-cards,.res-grid,.teacher-grid,.sponsor-tiers,.board-grid{grid-template-columns:1fr;}
+  .amt-grid{grid-template-columns:repeat(3,1fr);}
+  .inst-tabs button:nth-child(n+5){display:none;}
+  .reh-table th:nth-child(n+4),.reh-table td:nth-child(n+4){display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav>
+  <a href="#home" class="nav-logo">
+    <div class="nav-logo-box">
+      <span class="nav-logo-name">Logo Placeholder</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#concerts">Concerts</a></li>
+    <li><a href="#join">For Musicians</a></li>
+  </ul>
+  <a href="#donate" class="nav-donate">Donate</a>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">San Luis Chamber Orchestra</h1>
+    <p class="hero-sub">Live Music, Local Musicians</p>
+  </div>
+</section>
+
+<!-- ══════════════ ABOUT ══════════════ -->
+<section id="about" style="padding:0;background:#fff;">
+  <div class="about-inner fade-up">
+    <div class="about-img"></div>
+    <div class="about-text">
+      <p class="eyebrow">Who We Are</p>
+      <div class="divider"></div>
+      <h2 class="sec-title">We are a community orchestra of volunteer musicians, together for the love of the art</h2>
+      <p class="sec-body">Started with the mission to provide opportunities to those who want to play music more accessibly. We believe great orchestral music belongs to everyone — performer and audience alike — right here in San Luis Obispo.</p>
+      <div class="about-points">
+        <div class="about-point">
+          <span class="ap-icon">♩</span>
+          <div><div class="ap-label">What We Do</div><div class="ap-desc">An annual season of curated concerts, education programs, and community partnerships across San Luis Obispo County.</div></div>
+        </div>
+        <div class="about-point">
+          <span class="ap-icon">𝄞</span>
+          <div><div class="ap-label">Our Music</div><div class="ap-desc">From Baroque gems to Romantic masterworks — each season is thoughtfully programmed for an unforgettable experience.</div></div>
+        </div>
+        <div class="about-point">
+          <span class="ap-icon">◈</span>
+          <div><div class="ap-label">Partner &amp; Advertise</div><div class="ap-desc">Flexible advertising and sponsorship opportunities for local businesses who want to invest in the arts.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONCERTS ══════════════ -->
+<section id="concerts" class="sec sec-bg-light">
+  <div class="concerts-top">
+    <div>
+      <p class="eyebrow">2025–2026 Season</p>
+      <div class="divider"></div>
+      <h2 class="sec-title">Upcoming Concerts</h2>
+    </div>
+    <a href="#concerts" class="btn-outline" style="align-self:flex-end;">All Concerts &rsaquo;</a>
+  </div>
+
+  <div class="concert-cards fade-up">
+    <!-- Card 1 -->
+    <div class="concert-card">
+      <div class="cc-img cc-img-1">
+        <div class="cc-date-badge"><div class="month">Apr</div><div class="day">12</div></div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-name">Brahms &amp; the Romantics</div>
+        <div class="cc-venue">Performing Arts Center, SLO</div>
+        <div class="cc-time">7:30 – 9:30pm</div>
+        <div class="cc-actions">
+          <a href="#" class="cc-link">Read More »</a>
+        </div>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="concert-card">
+      <div class="cc-img cc-img-2">
+        <div class="cc-date-badge"><div class="month">May</div><div class="day">17</div></div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-name">Spring Serenade</div>
+        <div class="cc-venue">Mission San Luis Obispo</div>
+        <div class="cc-time">7:30 – 9:30pm</div>
+        <div class="cc-actions">
+          <a href="#" class="cc-link">Read More »</a>
+        </div>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="concert-card">
+      <div class="cc-img cc-img-3">
+        <div class="cc-date-badge"><div class="month">Jun</div><div class="day">7</div></div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-name">Season Finale: Beethoven</div>
+        <div class="cc-venue">Chumash Auditorium, SLO</div>
+        <div class="cc-time">4:00 – 6:00pm</div>
+        <div class="cc-actions">
+          <a href="#" class="cc-link">Read More »</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Past Concerts -->
+  <div class="past-concerts fade-up">
+    <div class="past-title">Past Concerts</div>
+    <div class="past-list">
+      <div class="past-item"><span class="past-item-date">Nov 2, 2025</span><span class="past-item-name">Opening Night: Vivaldi &amp; the Baroque</span><span class="past-item-venue">PAC, San Luis Obispo</span><span class="past-item-arr">→</span></div>
+      <div class="past-item"><span class="past-item-date">Dec 14, 2025</span><span class="past-item-name">Holiday Baroque</span><span class="past-item-venue">Mission San Luis Obispo</span><span class="past-item-arr">→</span></div>
+      <div class="past-item"><span class="past-item-date">Feb 8, 2026</span><span class="past-item-name">Chamber Classics: Mozart &amp; Mendelssohn</span><span class="past-item-venue">Chumash Auditorium</span><span class="past-item-arr">→</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ JOIN US / FOR MUSICIANS ══════════════ -->
+<section id="join" style="padding:0;background:#fff;">
+  <div class="join-inner fade-up">
+    <div class="join-text">
+      <p class="eyebrow">For Musicians</p>
+      <div class="divider"></div>
+      <h2 class="sec-title">Join Us</h2>
+      <p class="join-tagline">Play an instrument? Looking for Community? Join Us!</p>
+      <p class="join-body">We meet every Wednesday night from 6:00–8:00pm. We are open to all types of musicians. No audition required — just a love of music and a willingness to show up and play.</p>
+      <ul class="join-list">
+        <li>Adult</li>
+        <li>Youth</li>
+        <li>College Students</li>
+        <li>We are a great non-competitive alternative to Cal Poly Orchestra</li>
+      </ul>
+      <a href="#contact" class="btn-brown">Get In Touch</a>
+
+      <!-- Rehearsal Schedule -->
+      <div class="reh-schedule">
+        <div class="reh-header">Rehearsal Schedule — April 2026</div>
+        <table class="reh-table">
+          <thead>
+            <tr>
+              <th>Date</th><th>Title</th><th>Time</th><th>Location</th><th>Materials</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="reh-date-cell">Apr 2</td><td class="reh-name">Brahms Sextet — First Read</td><td>7:00–9:30pm</td><td>PAC Rm 204</td><td><a href="#" class="reh-mat">Parts →</a></td></tr>
+            <tr><td class="reh-date-cell">Apr 8</td><td class="reh-name">Full Program Dress Rehearsal</td><td>6:00–10:00pm</td><td>Perf. Arts Center</td><td><a href="#" class="reh-mat">Poster →</a></td></tr>
+            <tr><td class="reh-date-cell">Apr 10</td><td class="reh-name">Final Run-Through</td><td>7:00–9:00pm</td><td>PAC Rm 204</td><td><a href="#" class="reh-mat">Info →</a></td></tr>
+            <tr><td class="reh-date-cell">Apr 21</td><td class="reh-name">Spring Serenade Prep</td><td>7:00–9:30pm</td><td>PAC Rm 204</td><td><a href="#" class="reh-mat">Parts →</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="join-img"></div>
+  </div>
+</section>
+
+<!-- ══════════════ OUR MUSIC ══════════════ -->
+<section id="music" class="sec sec-bg-light">
+  <p class="eyebrow">Repertoire</p>
+  <div class="divider"></div>
+  <h2 class="sec-title">Our Music</h2>
+
+  <div class="music-cards fade-up">
+    <div class="music-card">
+      <div class="music-card-img mc-img-1">
+        <div class="music-card-overlay">
+          <div class="mc-title">Spring 2026 Orchestra</div>
+          <div class="mc-date">April 12, 2026</div>
+        </div>
+      </div>
+      <div class="music-card-body"><a href="#" class="mc-link">See More »</a></div>
+    </div>
+    <div class="music-card">
+      <div class="music-card-img mc-img-2">
+        <div class="music-card-overlay">
+          <div class="mc-title">Spring Serenade</div>
+          <div class="mc-date">May 17, 2026</div>
+        </div>
+      </div>
+      <div class="music-card-body"><a href="#" class="mc-link">See More »</a></div>
+    </div>
+    <div class="music-card">
+      <div class="music-card-img mc-img-3">
+        <div class="music-card-overlay">
+          <div class="mc-title">Season Finale</div>
+          <div class="mc-date">June 7, 2026</div>
+        </div>
+      </div>
+      <div class="music-card-body"><a href="#" class="mc-link">See More »</a></div>
+    </div>
+  </div>
+
+  <div class="rep-grid fade-up">
+    <div class="rep-item"><span class="rep-era">Baroque</span><span class="rep-composers">Vivaldi, Bach, Telemann, Handel</span></div>
+    <div class="rep-item"><span class="rep-era">Classical</span><span class="rep-composers">Mozart, Haydn, early Beethoven</span></div>
+    <div class="rep-item"><span class="rep-era">Romantic</span><span class="rep-composers">Brahms, Dvořák, Schumann, Schubert</span></div>
+    <div class="rep-item"><span class="rep-era">Modern</span><span class="rep-composers">Shostakovich, Bartók, Ravel, Fauré</span></div>
+    <div class="rep-item"><span class="rep-era">Contemporary</span><span class="rep-composers">New commissions &amp; living composers</span></div>
+    <div class="rep-item"><span class="rep-era">Chamber</span><span class="rep-composers">String quartets, wind ensembles, piano trios</span></div>
+  </div>
+</section>
+
+<!-- ══════════════ RESOURCES (For Musicians) ══════════════ -->
+<section id="resources" class="sec sec-bg-white">
+  <p class="eyebrow">Musicians</p>
+  <div class="divider"></div>
+  <h2 class="sec-title">Resources</h2>
+  <div class="res-grid fade-up">
+    <div class="res-card">
+      <div class="res-icon">🗣️</div>
+      <div class="res-title">Community Forum</div>
+      <p class="res-body">Connect with fellow SLO musicians. Share ideas, find collaborators, and stay in the loop on events across the Central Coast music community.</p>
+      <a href="#" class="res-link">Visit Forum →</a>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">🔍</div>
+      <div class="res-title">Find a Musician</div>
+      <p class="res-body">Looking for a substitute, collaborator, or ensemble partner? Our directory connects players of all instruments across San Luis Obispo County.</p>
+      <a href="#" class="res-link">Browse Directory →</a>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">🎓</div>
+      <div class="res-title">Find a Teacher</div>
+      <p class="res-body">Browse qualified music educators in the SLO area, organized by instrument and level. Private and group lessons for all ages.</p>
+      <a href="#teacher" class="res-link">Find a Teacher →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FIND A TEACHER ══════════════ -->
+<section id="teacher">
+  <p class="eyebrow">Teacher Directory</p>
+  <div class="divider"></div>
+  <h2 class="sec-title">Find a Teacher</h2>
+  <p style="font-size:0.9rem;color:var(--text-light);max-width:520px;margin-bottom:0.5rem;">Browse teachers by instrument. All teachers are vetted by the orchestra.</p>
+  <div class="inst-tabs">
+    <button class="inst-tab active" onclick="filterTab(this)">Violin</button>
+    <button class="inst-tab" onclick="filterTab(this)">Viola</button>
+    <button class="inst-tab" onclick="filterTab(this)">Cello</button>
+    <button class="inst-tab" onclick="filterTab(this)">Piano</button>
+    <button class="inst-tab" onclick="filterTab(this)">Brass</button>
+    <button class="inst-tab" onclick="filterTab(this)">Woodwind</button>
+    <button class="inst-tab" onclick="filterTab(this)">Percussion</button>
+    <button class="inst-tab" onclick="filterTab(this)">Voice</button>
+  </div>
+  <div class="teacher-grid fade-up">
+    <div class="teacher-card">
+      <div class="tc-name">Sarah Chen</div>
+      <div class="tc-instr">Violin · All Levels</div>
+      <p class="tc-desc">Graduate of SF Conservatory, 15 years of teaching experience from beginners to pre-professional. Suzuki and traditional methods.</p>
+      <a href="mailto:schen@example.com" class="tc-contact">schen@example.com →</a>
+    </div>
+    <div class="teacher-card">
+      <div class="tc-name">James Morales</div>
+      <div class="tc-instr">Violin · Intermediate–Advanced</div>
+      <p class="tc-desc">Former concertmaster with 20 years' performing experience. Technique development and chamber music preparation. Also teaches viola.</p>
+      <a href="mailto:jmorales@example.com" class="tc-contact">jmorales@example.com →</a>
+    </div>
+    <div class="teacher-card">
+      <div class="tc-name">Petra Volkov</div>
+      <div class="tc-instr">Violin · Beginners Welcome</div>
+      <p class="tc-desc">Patient and encouraging, 10 years' experience with young students and adult beginners. In-person and online lessons available.</p>
+      <a href="mailto:pvolkov@example.com" class="tc-contact">pvolkov@example.com →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ OUR BOARD ══════════════ -->
+<section id="board" class="sec">
+  <p class="eyebrow">Leadership</p>
+  <div class="divider"></div>
+  <h2 class="sec-title">Our Board</h2>
+  <div class="board-grid fade-up">
+    <div class="board-card"><div class="board-photo"></div><div class="board-name">Mark Kovacs</div><div class="board-role">Music Director</div></div>
+    <div class="board-card"><div class="board-photo"></div><div class="board-name">Linda Clarke</div><div class="board-role">President</div></div>
+    <div class="board-card"><div class="board-photo"></div><div class="board-name">Christopher Rose</div><div class="board-role">Incoming Chairman</div></div>
+    <div class="board-card"><div class="board-photo"></div><div class="board-name">Tetsuo Uyeda</div><div class="board-role">Music Committee</div></div>
+    <div class="board-card"><div class="board-photo"></div><div class="board-name">Keith Waibel</div><div class="board-role">Member at Large</div></div>
+    <div class="board-card"><div class="board-photo"></div><div class="board-name">Leonard Lutz</div><div class="board-role">Member at Large</div></div>
+    <div class="board-card"><div class="board-photo"></div><div class="board-name">Jack Marzano</div><div class="board-role">Member at Large</div></div>
+    <div class="board-card"><div class="board-photo"></div><div class="board-name">Bob Liepman</div><div class="board-role">Member at Large</div></div>
+    <div class="board-card"><div class="board-photo"></div><div class="board-name">Ingrid Kovacs</div><div class="board-role">Member at Large</div></div>
+    <div class="board-card"><div class="board-photo"></div><div class="board-name">Neil Bennett</div><div class="board-role">Member at Large</div></div>
+  </div>
+</section>
+
+<!-- ══════════════ DONATE ══════════════ -->
+<section id="donate" class="sec sec-bg-tan">
+  <div class="donate-inner">
+    <div class="fade-up">
+      <p class="eyebrow">Support the Arts</p>
+      <div class="divider"></div>
+      <h2 class="sec-title">Help Keep Music Alive in SLO</h2>
+      <p class="sec-body" style="margin-bottom:1.5rem;">Your generosity makes it possible for the San Luis Chamber Orchestra to bring live music to our community. Every contribution directly supports our volunteer musicians and programs.</p>
+
+      <div class="freq-toggle">
+        <button class="freq-btn active" onclick="setFreq(this)">One-Time</button>
+        <button class="freq-btn" onclick="setFreq(this)">Monthly</button>
+        <button class="freq-btn" onclick="setFreq(this)">Annual</button>
+      </div>
+      <div class="amt-grid">
+        <button class="amt-btn" onclick="setAmt(this)"><span class="amt-num">$25</span><div class="amt-label">Supporter</div></button>
+        <button class="amt-btn" onclick="setAmt(this)"><span class="amt-num">$50</span><div class="amt-label">Friend</div></button>
+        <button class="amt-btn active" onclick="setAmt(this)"><span class="amt-num">$150</span><div class="amt-label">Patron</div></button>
+        <button class="amt-btn" onclick="setAmt(this)"><span class="amt-num">$250</span><div class="amt-label">Benefactor</div></button>
+        <button class="amt-btn" onclick="setAmt(this)"><span class="amt-num">$500</span><div class="amt-label">Sponsor</div></button>
+        <button class="amt-btn" onclick="setAmt(this)"><span class="amt-num">Other</span><div class="amt-label">Custom</div></button>
+      </div>
+      <input class="d-input" type="text" placeholder="Or enter a custom amount ($)">
+      <div class="d-row">
+        <input class="d-input" type="text" placeholder="First Name">
+        <input class="d-input" type="text" placeholder="Last Name">
+      </div>
+      <input class="d-input" type="email" placeholder="Email Address">
+      <input class="d-input" type="text" placeholder="Card Number">
+      <div class="d-row">
+        <input class="d-input" type="text" placeholder="MM / YY">
+        <input class="d-input" type="text" placeholder="CVV">
+      </div>
+      <button class="btn-donate">Donate Now</button>
+      <p class="d-note">San Luis Chamber Orchestra is a nonprofit. All donations are tax-deductible. You will receive an email receipt.</p>
+    </div>
+    <div class="fade-up" style="transition-delay:0.15s">
+      <p class="eyebrow">Your Impact</p>
+      <div class="divider"></div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;color:#111;margin-bottom:1.5rem;">Every dollar makes<br><em>a difference</em></h3>
+      <div class="impact-items">
+        <div class="impact-item"><div class="impact-bar"></div><div><div class="impact-amt">$25</div><div class="impact-desc">Covers a musician's printed music parts and stand for one concert</div></div></div>
+        <div class="impact-item"><div class="impact-bar"></div><div><div class="impact-amt">$50</div><div class="impact-desc">Covers sheet music for one musician for an entire season</div></div></div>
+        <div class="impact-item"><div class="impact-bar"></div><div><div class="impact-amt">$150</div><div class="impact-desc">Supports one full rehearsal session for our entire ensemble</div></div></div>
+        <div class="impact-item"><div class="impact-bar"></div><div><div class="impact-amt">$250</div><div class="impact-desc">Funds a student outreach visit to a local school</div></div></div>
+        <div class="impact-item"><div class="impact-bar"></div><div><div class="impact-amt">$500+</div><div class="impact-desc">Sponsors a full concert performance and community event in SLO</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sponsor Tiers -->
+<div class="sponsor-strip">
+  <p class="eyebrow" style="color:rgba(192,150,90,0.8)">Corporate &amp; Organization</p>
+  <div class="divider divider-light"></div>
+  <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:600;color:#fff;margin-bottom:0.5rem;">Sponsorship Opportunities</h2>
+  <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);max-width:520px;">Align your organization with excellence in the arts and connect with the SLO community.</p>
+  <div class="sponsor-tiers">
+    <div class="s-tier fade-up">
+      <div class="s-name">Friend of the Orchestra</div>
+      <div class="s-price">From $500 / season</div>
+      <ul class="s-benefits">
+        <li>Name in concert programs</li>
+        <li>Website recognition</li>
+        <li>2 complimentary seats</li>
+      </ul>
+    </div>
+    <div class="s-tier fade-up" style="transition-delay:0.1s">
+      <div class="s-name">Season Sponsor</div>
+      <div class="s-price">From $1,000 / season</div>
+      <ul class="s-benefits">
+        <li>Logo in all season materials</li>
+        <li>Social media recognition</li>
+        <li>6 complimentary seats</li>
+        <li>Pre-concert reception</li>
+      </ul>
+    </div>
+    <div class="s-tier fade-up" style="transition-delay:0.2s">
+      <div class="s-name">Presenting Sponsor</div>
+      <div class="s-price">From $2,500 / concert</div>
+      <ul class="s-benefits">
+        <li>Concert naming rights</li>
+        <li>Stage acknowledgment</li>
+        <li>10 complimentary seats</li>
+        <li>Meet-the-musicians event</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ GET IN TOUCH ══════════════ -->
+<section id="contact" class="sec sec-bg-dark">
+  <div class="contact-inner">
+    <div class="contact-left fade-up">
+      <p class="eyebrow eyebrow-light">Reach Out</p>
+      <div class="divider divider-light"></div>
+      <h2 class="sec-title" style="color:#fff;">Get In Touch</h2>
+      <p class="sec-body" style="color:rgba(255,255,255,0.55);">We'd love to hear from you — whether you're interested in joining the orchestra, attending a concert, sponsoring a program, or simply learning more about what we do.</p>
+      <div class="contact-details">
+        <div class="c-detail"><span class="c-icon">✉</span><a href="mailto:SLOChamberOrchestra@gmail.com">SLOChamberOrchestra@gmail.com</a></div>
+        <div class="c-detail"><span class="c-icon">☎</span><a href="tel:8003433144">(800) 343-3144</a></div>
+        <div class="c-detail"><span class="c-icon">⌖</span><span>173 Streetname, City 99999, CA, USA</span></div>
+      </div>
+      <div class="social-row">
+        <a href="#" class="social-btn" title="LinkedIn">in</a>
+        <a href="#" class="social-btn" title="Twitter">𝕏</a>
+        <a href="#" class="social-btn" title="Facebook">f</a>
+        <a href="#" class="social-btn" title="Instagram">◎</a>
+      </div>
+    </div>
+    <div class="fade-up" style="transition-delay:0.15s">
+      <div class="contact-form">
+        <input class="c-input" type="text" placeholder="First*">
+        <input class="c-input" type="email" placeholder="Email Address*">
+        <input class="c-input" type="text" placeholder="Subject">
+        <textarea class="c-textarea" placeholder="Message"></textarea>
+        <button class="btn-send">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">Copyright © 2026 SLO Chamber Orchestra · All Rights Reserved</span>
+    <div class="footer-tags">
+      <a href="#about">Tag</a>
+      <a href="#concerts">Tag</a>
+      <a href="#contact">Tag</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Fade up on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.07 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+// Active nav on scroll
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + cur) a.classList.add('active');
+  });
+});
+
+// Donate toggles
+function setFreq(btn) { document.querySelectorAll('.freq-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }
+function setAmt(btn) { document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }
+function filterTab(btn) { document.querySelectorAll('.inst-tab').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }
+</script>
+</body>
+</html>

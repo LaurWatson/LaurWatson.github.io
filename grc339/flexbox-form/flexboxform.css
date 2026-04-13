@@ -1,0 +1,114 @@
+/*CSS DOCUMENT*/
+
+body {
+	font-family: sans-serif;
+	line-height: 1.4em;
+	color: #222;
+	background-color: #fafafa;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	}
+	
+div.container {
+        max-width: 40em;
+        margin: 1em;
+        padding: 1em;
+}
+
+section.personal-info ul li input[type="text"],
+section ul li input[type="email"],
+section ul li input[type="tel"],
+section ul li select {
+	flex: 1 0 25em;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	margin: 0;
+	background-color: #FFF;
+	border: solid .5px #999;
+	border-radius: 5px;
+}
+
+section.personal-info ul li {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	margin: 0 0 1rem 0;
+}
+
+section.personal-info ul li label {
+	flex: .5 0 8em;
+}
+
+section.order ul,
+section.method ul {
+	display:flex;
+	flex-wrap: wrap;
+}
+
+section.order ul li,
+section.method ul li {
+	flex: 1 0 16rem;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+section {
+    background: #eee;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+section p {
+	margin-top: 0;
+}
+
+textarea {
+	box-sizing: border-box;
+	display: flex;
+	flex: 10 0 30rem;
+	width: 100%;
+	height: 6em;
+	background: #fcfcfc;
+	border: 1px solid #e8e8e8;
+	padding: 0.4em;
+	font-family: sans-serif;
+	color: #777;
+	}
+
+button {
+	background-color: #FFF;
+	border: solid .5px #999;
+	border-radius: 5px;
+	padding: 0 .5rem;
+}
+
+h3 {
+	margin: 2rem 0 0 0;
+}
+
+/* You want to delete this line to make the media query work. Then you’ll only need one declaration block with one declaration in it. You got it, right? You know how to center the content on the page.*/
+@media only screen and (min-width: 40em) {
+
+div.container {
+    margin: 0;
+  }
+
+
+section.personal-info ul li input[type="text"],
+section ul li input[type="email"],
+section ul li input[type="tel"],
+section ul li select {
+	flex: 10 0 16em;
+	box-sizing: border-box;
+	margin: 0;
+	background-color: #FFF;
+	border: solid .5px #999;
+	border-radius: 5px;
+}
+
+}

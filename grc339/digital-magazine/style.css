@@ -1,0 +1,512 @@
+/*CSS document*/
+
+html, body, div, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit;}
+
+/* base styles */
+
+img {
+    width: 100%;
+    display: block;
+}
+
+body {
+    background-image: url(background.jpeg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    display: inline;
+    position: relative;
+}
+
+div.container, div.homecontainer {
+    max-width: 60rem;
+    margin: 0 auto;
+    background-color: #fff;
+    min-height: 100vh;
+    padding: 0 1rem;
+}
+
+header {
+    padding: 1rem 1rem 0 0;
+}
+
+header img {
+    width: 8rem;
+}
+
+nav ul {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    font-family: sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    margin: 2rem 0 1rem;
+}
+
+nav ul li a {
+    font-family: "space-mono", mono;
+    font-weight: 200;
+    text-transform: uppercase;
+    color: #CC3600;
+    font-size: 1rem;
+    margin: .5rem 0;
+}
+
+/* typography */
+
+h1 {
+    width: 9em;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #1D201F;
+    margin: .5rem 0 0;
+    font-family: "slight-chance", sans-serif;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-family: "slight-chance", sans-serif;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: .5rem 0 0;
+}
+
+p {
+    margin: 1rem 0;
+    color: #1D201F;
+    line-height: 1.1;
+    font-family: "dm-sans", sans-serif;
+    font-weight: 400;
+}
+
+li {
+    margin: 1rem 0 0;
+    color: #1D201F;
+    line-height: 1.1;
+    font-family: "dm-sans", sans-serif;
+    font-weight: 400;
+}
+
+figcaption {
+    margin: 1rem 0;
+    line-height: 1.1;
+    font-family: "dm-sans", sans-serif;
+    font-weight: 400;
+}
+
+/* story sections */
+
+section.mainstory h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin: .5rem 0 0;
+}
+
+section.mainstory p {
+    margin: 1rem 0;
+    line-height: 1.1;
+}
+
+section.secondarystory h2 {
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin: .5rem 0;
+}
+
+section.secondarystory p {
+    margin: 1rem 0;
+    line-height: 1.1;
+}
+
+section.tertiarystory h2 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin: 1rem 0;
+    border-top: 6px solid #bec9d9;
+}
+
+section.tertiarystory p {
+    margin: 1rem 0;
+    line-height: 1.1;
+}
+
+/* layout */
+
+footer {
+    background-color: #1D201F;
+    color: #fff;
+    padding: 1rem;
+    font-family: "space-mono", mono;
+    font-weight: 400;
+    line-height: 1.1;
+    height: fit-content;
+}
+
+aside {
+    background-color: #d5e0e6;
+    padding: 1rem;
+}
+
+/* css gallery */
+
+figure.media {
+    margin: 0;
+    width: 100%;
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 0;
+}
+
+figure.media img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+input.media:nth-of-type(1):checked ~ div.mediagrid div.mediawrapper main figure:nth-of-type(1),
+input.media:nth-of-type(2):checked ~ div.mediagrid div.mediawrapper main figure:nth-of-type(2),
+input.media:nth-of-type(3):checked ~ div.mediagrid div.mediawrapper main figure:nth-of-type(3),
+input.media:nth-of-type(4):checked ~ div.mediagrid div.mediawrapper main figure:nth-of-type(4),
+input.media:nth-of-type(5):checked ~ div.mediagrid div.mediawrapper main figure:nth-of-type(5),
+input.media:nth-of-type(6):checked ~ div.mediagrid div.mediawrapper main figure:nth-of-type(6),
+input.media:nth-of-type(7):checked ~ div.mediagrid div.mediawrapper main figure:nth-of-type(7),
+input.media:nth-of-type(8):checked ~ div.mediagrid div.mediawrapper main figure:nth-of-type(8) {
+    height: auto;
+    opacity: 1;
+}
+
+aside.media {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    grid-gap: 0.2em;
+    position: relative;
+    z-index: 0;
+    background-color: transparent;
+}
+
+aside.media label {
+    display: block;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+aside.media label img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+input.media {
+    display: none;
+}
+
+div.mediacontainer {
+    width: 100%;
+}
+
+div.mediawrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+main.media {
+    position: relative;
+    width: 100%;
+}
+
+div.mediagrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: .5rem;
+    align-items: start;
+    padding: 1rem 0 0;
+}
+
+/* form */
+
+input[type="text"],
+input[type="email"] {
+    box-sizing: border-box;
+    background-color: #fff;
+    border: solid .5px #999;
+    border-radius: 5px;
+    padding: 0.4rem;
+    height: 2rem;
+    width: 100%;
+}
+
+section.personal-info ul li {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 0 1rem;
+}
+
+section.personal-info ul li label {
+    flex: .5 0 8em;
+}
+
+section.hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    grid-column: 1 / 4;
+}
+
+section.hero img {
+    width: 100%;
+    max-height: 20rem;
+    object-fit: cover;
+    display: block;
+}
+
+form {
+    width: fit-content;
+    padding: 1rem 0 2rem;
+}
+
+form h3 {
+    border-bottom: 2px solid #DAD7CD;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+section.personal-info ul,
+section.interests ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+}
+
+section.interests ul li input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    accent-color: #CC3600;
+}
+
+section.interests p {
+    margin: 0 0 0.75rem;
+}
+
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: 6em;
+    background: #fcfcfc;
+    border: 1px solid #e8e8e8;
+    padding: 0.4em;
+    font-family: sans-serif;
+    color: #777;
+}
+
+button.submit,
+input[type="submit"] {
+    background-color: #CC3600;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-family: "space-mono", mono;
+    text-transform: uppercase;
+    margin-top: 1rem;
+}
+
+/* tablet */
+
+@media screen and (min-width: 44rem) {
+
+    header {
+        padding: 1rem 0 0;
+    }
+
+    nav ul li {
+        display: inline;
+        margin-right: 1rem;
+    }
+
+    nav ul li a {
+        margin: 1rem 1rem 1rem 0;
+    }
+
+    h2,
+    section.mainstory h2,
+    section.secondarystory h2,
+    section.tertiarystory h2 {
+        margin: 0;
+    }
+
+    p,
+    section.mainstory p,
+    section.secondarystory p,
+    section.tertiarystory p {
+        margin: 1rem 0;
+    }
+
+    header img {
+        margin: 0;
+        width: 100%;
+    }
+
+}
+
+/* desktop */
+
+@media only screen and (min-width: 60em) {
+
+    div.homecontainer {
+        max-width: 70rem;
+        padding: 0 1rem;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-gap: 1rem;
+    }
+
+    div.container {
+        max-width: 70em;
+        padding: 0 1rem;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-gap: 1rem;
+    }
+
+    header, footer, main.form {
+        grid-column: 1 / 3;
+    }
+
+    div.mediacontainer {
+        grid-column: 1 / 3;
+    }
+
+    main:not(.media) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1rem;
+    }
+
+    div.homecontainer aside,
+    div.container aside {
+        background: none;
+        padding: 0;
+        margin-top: 0;
+    }
+
+    section.mainstory {
+        grid-column: 2 / 4;
+        grid-row: 1 / 3;
+        display: flex;
+    }
+
+    section.mainstory a,
+    section.secondarystory a {
+        flex: 1 0 12em;
+        display: flex;
+        flex-direction: column;
+    }
+
+    section.mainstory a figure,
+    section.secondarystory a figure {
+        flex: 1 0 12em;
+        display: flex;
+    }
+
+    section.mainstory a figure img,
+    section.secondarystory a figure img {
+        object-fit: cover;
+    }
+
+    section.mainstory a h2,
+    section.secondarystory a h2 {
+        flex: 0 0 1em;
+    }
+
+    section.mainstory a p,
+    section.secondarystory a p {
+        flex: 0 0 4em;
+    }
+
+    section.secondarystory {
+        display: flex;
+    }
+
+    form {
+        padding: 0;
+    }
+
+    div.mediagrid {
+        grid-gap: 2rem;
+    }
+
+}
+
+/* dark mode */
+
+@media screen and (prefers-color-scheme: dark) {
+
+    div.container, div.homecontainer {
+        background-color: #1D201F;
+    }
+
+    body {
+        background-color: #4D7298;
+    }
+
+    a {
+        color: #fff;
+    }
+
+    nav ul li a {
+        color: #c0a9a1;
+    }
+
+    h2, h3, h4, p, li {
+        color: #fff;
+    }
+
+    figcaption {
+        color: #c0a9a1;
+    }
+
+    footer {
+        background-color: #d6cbc7;
+        color: #1D201F;
+    }
+
+    aside {
+        background-color: #223f5d;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+        background-color: #fff;
+        border: solid .5px #DAD7CD;
+    }
+
+    h1 {
+        background-image: url("logo-light.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    h1 img {
+        opacity: 0;
+    }
+
+    button.submit {
+        background-color: #5e7496;
+    }
+
+}
